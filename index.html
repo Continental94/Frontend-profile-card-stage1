@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Wizards Profile Card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="main-container">
+
+        <article class="profile-card" data-testid="test-profile-card">
+            
+            <header class="card-header">
+                <figure class="avatar-section">
+                    <img src="images/Onabanjo.jpeg" alt="Onabanjo">
+					
+                </figure>
+
+                <div class="user-info-section">
+                    <h2 class="user-name" data-testid="test-user-name">
+                        Onabanjo Ayoola
+                    </h2>
+                    
+                    <p class="user-bio" data-testid="test-user-bio">
+                        Aspiring Frontend Wizard. Building accessible and responsive components with passion. Currently focused on mastering modern CSS and Vanilla JS.
+                    </p>
+                    
+                    <p class="current-time-display">
+                        Time (ms): <span data-testid="test-user-time">0000000000000</span>
+                    </p>
+                </div>
+            </header>
+
+            <nav class="social-links-container" data-testid="test-user-social-links">
+                <h3>Connect</h3>
+                <ul class="social-links-list">
+                    <li>
+                        <a href="https://github.com/Continental94" target="_blank" rel="noopener noreferrer" 
+                           data-testid="test-user-social-github" aria-label="Link to my GitHub profile">
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                         <a href="https://www.linkedin.com/in/infinity-quotient-140924382?" target="_blank" rel="noopener noreferrer" 
+                            data-testid="test-user-social-linkedin" aria-label="Link to my LinkedIn profile">
+                            LinkedIn
+                        </a>
+                    </li>
+                    <li>
+                         <a href="mailto:onabanjoayoolaolamilekan@gmail.com" target="_blank" rel="noopener noreferrer" 
+                            data-testid="test-user-social-email" aria-label="Send an email to me">
+                            Email
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <section class="hobbies-section">
+                <h3>My Hobbies</h3>
+                <ul class="list-data" data-testid="test-user-hobbies">
+					<li>Web Development</li>
+                    <li>Learning new JavaScript concepts</li>
+                    <li>Reading tech blogs</li>
+                    <li>Graphic Designing</li>
+                </ul>
+            </section>
+
+            <section class="dislikes-section">
+                <h3>My Dislikes</h3>
+                <ul class="list-data" data-testid="test-user-dislikes">
+                    <li>Non-semantic HTML</li>
+                    <li>Poorly documented code</li>
+                    <li>Inaccessible design</li>
+                </ul>
+            </section>
+            
+        </article>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
