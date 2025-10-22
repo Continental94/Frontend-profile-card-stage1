@@ -2,9 +2,11 @@
 :root {
     /* Define some variables for easier maintenance */
     --card-bg: #fff;
-    --primary-color: #007bff;
+    --primary-color: #007bff; /* Main brand color */
+    --accent-color: #0056b3; /* Darker primary for hover/focus */
     --text-color: #333;
-    --border-radius: 12px;
+    --border-radius: 8px; /* Slightly reduced radius for a crisper look */
+    --box-shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -18,33 +20,80 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text-color);
     background-color: #f4f7f9;
-    
-    /* Layout: Center the card on the page */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    padding-top: 60px; /* Space for the fixed header */
 }
 
-/* 2. Card Container Styling */
+a:focus, button:focus, input:focus, textarea:focus {
+    outline: 3px solid var(--primary-color); /* Clear, high-contrast outline */
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* --- SITE NAVIGATION STYLING --- */
+.site-header {
+    background-color: #333; /* Dark background for header */
+    color: white;
+    padding: 10px 0;
+    position: fixed; /* Fixed navigation bar */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.main-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-list {
+    list-style: none; /* Remove bullets */
+    display: flex; /* Makes the list items horizontal */
+    justify-content: flex-end; /* Align links to the right */
+    gap: 20px; /* Spacing between links */
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    display: block;
+    transition: background-color 0.3s;
+    border-radius: 4px;
+}
+
+.main-nav a:hover, .main-nav a:focus {
+    background-color: var(--accent-color); /* Highlight on hover/focus */
+}
+
+/* --- MAIN CONTAINER & CARD STYLING --- */
+.main-container {
+    padding: 20px;
+    max-width: 1000px; /* Increased max width for main content */
+    margin: 0 auto;
+}
+
 .profile-card {
     width: 100%;
-    max-width: 700px; /* Max size for desktop view */
+    max-width: 700px; 
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-light);
     padding: 25px;
+    margin: 30px auto; /* Centers the card */
     display: flex;
-    flex-direction: column; /* Mobile: Stack all sections vertically */
-    gap: 25px; /* Spacing between sections */
+    flex-direction: column; 
+    gap: 25px;
 }
 
-/* 3. Header/Avatar/Info Section (Crucial for Responsiveness) */
+/* 2. Card Header/Avatar/Info Section */
 .card-header {
     display: flex;
-    flex-direction: column; /* Default stack on mobile */
+    flex-direction: column; 
     gap: 20px;
-    align-items: center; /* Center items on mobile */
+    align-items: center; 
     border-bottom: 1px solid #eee;
     padding-bottom: 20px;
 }
@@ -52,232 +101,122 @@ body {
 .avatar-section img {
     width: 120px;
     height: 120px;
-    border-radius: 50%; /* Circular avatar */
+    border-radius: 50%; 
     object-fit: cover;
     border: 4px solid var(--primary-color);
+    box-shadow: 0 0 0 6px rgba(0, 123, 255, 0.2); /* Subtle outer ring */
 }
 
 .user-info-section {
-    text-align: center; /* Center text on mobile */
+    text-align: center; 
 }
 
 .user-name {
-    font-size: 1.8em;
+    font-size: 2em; /* Slightly larger name */
     margin-bottom: 5px;
+    color: #222;
 }
 
 .user-bio {
-    line-height: 1.5;
+    line-height: 1.6;
     margin-top: 10px;
-    /* For long content, ensure it wraps correctly */
-    word-wrap: break-word; 
+    font-size: 1.05em;
+    max-width: 400px; /* Tidy up long bio text */
 }
 
-/* 4. Lists Styling (Social Links, Hobbies, Dislikes) */
-h3 {
+.current-time-display {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* 3. Section Titles and Lists */
+.section-title {
     color: var(--primary-color);
-    margin-bottom: 10px;
-    font-size: 1.2em;
-}
-
-.social-links-list,
-.list-data {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    margin-bottom: 15px;
+    font-size: 1.4em; /* Larger section titles */
+    border-left: 5px solid var(--primary-color);
+    padding-left: 10px;
 }
 
 .social-links-list {
+    list-style: none;
+    padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center; /* Center links on mobile */
+    gap: 12px;
+    justify-content: center;
 }
 
 .social-links-list a {
     display: block;
-    padding: 8px 15px;
+    padding: 10px 18px; /* Slightly larger buttons */
     background-color: #e9ecef;
     color: var(--text-color);
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 20px; /* Pill-shaped buttons */
+    font-weight: 500;
     transition: background-color 0.2s, box-shadow 0.2s;
-    
-    /* Accessibility: VISIBLE focus state is REQUIRED */
-    outline: 2px solid transparent; 
+    outline: none; /* Controlled by the global focus style */
 }
 
 .social-links-list a:hover {
     background-color: #dee2e6;
 }
 
-.social-links-list a:focus { /* Crucial for keyboard accessibility testing */
-    background-color: #dee2e6;
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
+.list-data {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .list-data li {
     background-color: #f8f9fa;
-    padding: 8px;
-    border-left: 3px solid var(--primary-color);
-    margin-bottom: 5px;
+    padding: 10px 15px;
+    border-left: 4px solid var(--primary-color); /* Thicker accent line */
+    margin-bottom: 8px;
     border-radius: 4px;
+    transition: transform 0.1s;
 }
 
-/* 5. RESPONSIVENESS (Tablet/Desktop Layout) */
+.list-data li:hover {
+    transform: translateX(3px); /* Subtle hover effect */
+}
+
+/* --- RESPONSIVENESS (Tablet/Desktop Layout) --- */
 @media (min-width: 600px) {
     
     .card-header {
-        flex-direction: row; /* WIDER SCREENS: Avatar left, text right */
+        flex-direction: row; 
         text-align: left;
-        align-items: flex-start; /* Align to the top */
+        align-items: flex-start;
     }
     
     .user-info-section {
-        text-align: left; /* Align text to the left */
-        flex-grow: 1; /* Take up remaining space */
+        text-align: left; 
+        flex-grow: 1; 
     }
 
     .social-links-list {
-        justify-content: flex-start; /* Align links to the left */
+        justify-content: flex-start; 
     }
 
-    /* Mobile-first styles (default) */
-.form-group {
-    width: 100%; /* Full width on small screens */
-}
-
-/* Tablet and up */
-@media (min-width: 768px) {
-    /* Example: Layout for About Me page sections */
-    main section {
-        padding: 2rem;
-        border-left: 5px solid #ccc;
-    }
-
-    /* Example: Two-column form layout */
-    #contact-form .two-column-group {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
+    /* About Page Specific Layout */
+    .about-container section {
+        padding: 20px;
+        margin-left: 20px;
+        border-left: 3px solid #ccc;
     }
 }
 
-a:focus, button:focus, input:focus, textarea:focus {
-    outline: 3px solid #007bff; /* Clear, high-contrast outline */
-    outline-offset: 2px;
-}
-
-/* --- Navigation Styling (styles.css) --- */
-
-/* Basic reset/body setup */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9; /* Light grey background */
-}
-
-header {
-    background-color: #333; /* Dark background for header */
-    color: white;
-    padding: 10px 0;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between; /* Puts logo/name on left, links on right */
-    align-items: center;
-    max-width: 1200px; /* Optional: limits width on large screens */
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-nav .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-nav ul {
-    list-style: none; /* Remove bullets */
-    padding: 0;
-    margin: 0;
-    display: flex; /* Makes the list items horizontal */
-    gap: 20px; /* Spacing between links */
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 5px 10px;
-    transition: background-color 0.3s;
-}
-
-nav a:hover, nav a:focus {
-    background-color: #555; /* Highlight on hover/focus for accessibility */
-    border-radius: 4px;
-}
-
-/* Optional: Ensure profile card content is centralized */
-.profile-card {
-    max-width: 400px;
-    margin: 50px auto; /* Centers it below the nav */
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    border-radius: 8px;
-}
-
-/* --- About Me Page Styling (styles.css) --- */
-
-.about-container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-    line-height: 1.6;
-    background-color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow for lift */
-    border-radius: 8px;
-}
-
-.about-container h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 40px;
-    border-bottom: 2px solid #007bff; /* Accent line */
-    display: inline-block;
-    padding-bottom: 5px;
-}
-
-.about-container h2 {
-    color: #007bff; /* Primary accent color */
-    margin-top: 30px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #eee;
-}
-
-.about-container section {
-    margin-bottom: 30px;
-}
-
-.about-container ul {
-    padding-left: 20px;
-}
-
-.about-container li {
-    margin-bottom: 10px;
-}
-
-/* --- Contact Us Page Styling (styles.css) --- */
-
+/* --- CONTACT FORM STYLING --- */
 .contact-wrapper {
     max-width: 600px;
-    margin: 50px auto; /* Center on page */
+    margin: 50px auto; 
     padding: 30px;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-light);
 }
 
 .contact-wrapper h1 {
@@ -286,101 +225,72 @@ nav a:hover, nav a:focus {
     margin-bottom: 30px;
 }
 
-/* Style for each field container */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px; /* More vertical space between fields */
 }
 
-/* Make labels display on their own line */
 .form-group label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
+    margin-bottom: 8px; /* More space below label */
+    font-weight: 600; /* Bolder label */
+    color: var(--text-color);
 }
 
-/* Style all inputs and textareas */
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="tel"],
+.form-group input,
 .form-group textarea {
-    width: 100%; /* Important for responsiveness: takes full width of container */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Ensures padding doesn't affect the overall width */
+    width: 100%;
+    padding: 12px; /* Increased padding */
+    border: 1px solid #ddd;
+    border-radius: 6px; /* Slightly rounder edges */
+    box-sizing: border-box; 
     font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
 }
 
 .form-group textarea {
-    resize: vertical; /* Only allow vertical resizing */
-    min-height: 100px; /* Minimum height for the message field */
+    resize: vertical;
+    min-height: 120px;
 }
 
-/* Style the submit button */
 .contact-wrapper button[type="submit"] {
     display: block;
     width: 100%;
-    padding: 12px;
-    background-color: #007bff; /* Primary button color */
+    padding: 14px; /* Larger button */
+    background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 4px;
-    font-size: 1.1rem;
+    border-radius: 6px;
+    font-size: 1.15rem;
+    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .contact-wrapper button[type="submit"]:hover {
-    background-color: #0056b3; /* Darken on hover */
+    background-color: var(--accent-color);
 }
 
 /* Error Message Styling */
 .error-message {
-    color: red;
+    color: #dc3545; /* Bootstrap Red */
     font-size: 0.9em;
     margin-top: 5px;
-    display: none; /* Initially hidden, shown by JavaScript */
+    display: none; 
+    font-style: italic;
 }
 
-/* --- Essential Navigation Styles (styles.css) --- */
-header {
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
-}
-
-nav {
-    display: flex; /* Enables Flexbox layout */
-    justify-content: space-between; 
-    align-items: center;
-    /* ... other centering/padding properties ... */
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex; /* Makes the list items horizontal */
-    gap: 20px; 
-}
-
-/* Make sure the main content is positioned correctly below the header */
-.profile-card {
-    margin-top: 50px; /* Add space below the fixed header */
-    /* ... other profile card styles ... */
-}
-
-.profile-card {
-    max-width: 400px;
-    /* The magic combo for centering a block element */
-    margin-left: auto;
-    margin-right: auto; 
-    margin-top: 50px; /* Space from the header */
-
+/* Success Message Styling */
+#success-message {
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    border-radius: 8px;
-}
+    border: 1px solid #28a745;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
 }

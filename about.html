@@ -3,53 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontend Wizards Profile Card Stage 1</title>
+    <title>About Me | Frontend Wizards Profile Card</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header class="site-header">
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main data-testid="test-about-page" class="about-container">
+        <h1>About Me</h1>
 
-                    <header>
-                        <nav>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About Me</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
-                            </ul>
-                        </nav>
-                    </header>
-    <h1>About Me</h1>
-
-    <section data-testid="test-about-bio">
-        <h2>My Bio</h2>
-        <p>I am a passionate frontend developer, aspiring to build accessible
-            and responsive components with passion. </br> And also aspiring to make
-            lots of impacts in peoples life with my skills and knowledge.</p>
+        <section data-testid="test-about-bio">
+            <h2 class="section-title">My Bio</h2>
+            <p>I am an aspiring frontend developer, aspiring to build accessible
+                and responsive components with passion. <br> And also aspiring to make
+                lots of impacts in peoples life with my skills and knowledge.</p>
         </section>
 
-    <section data-testid="test-about-goals">
-        <h2>Goals in this Program</h2>
-        <p>My primary goals are:</p>
-        <ul>
-            <li>To achieve mastery of modern frontend programming.</li>
-            <li>To implement robust accessibility standards in every project.</li>
-            <li>To complete a full-stack project utilizing a database.</li>
-        </ul>
-    </section>
-
-    <section data-testid="test-about-confidence">
-        <h2>Areas of Low Confidence</h2>
-        <p>Currently, I feel least confident in learning and progressing</p>
+        <section data-testid="test-about-goals">
+            <h2 class="section-title">Goals in this Program</h2>
+            <p>My primary goals are:</p>
+            <ul>
+                <li>To achieve mastery of modern frontend programming.</li>
+                <li>To implement robust accessibility standards in every project.</li>
+                <li>To complete a full-stack project utilizing a database.</li>
+            </ul>
         </section>
 
-    <section data-testid="test-about-future-note">
-        <h2>Note to Future Self</h2>
-        <p>Dear Future Self: Remember this moment! Keep prioritizing learning over perfection...</p>
-    </section>
+        <section data-testid="test-about-confidence">
+            <h2 class="section-title">Areas of Low Confidence</h2>
+            <p>Currently, I feel least confident in learning and progressing</p>
+        </section>
 
-    <section data-testid="test-about-extra">
-        <h2>Extra Thoughts</h2>
-        <p>I'm excited to dive into the next stages...</p>
-    </section>
-</main>
+        <section data-testid="test-about-future-note">
+            <h2 class="section-title">Note to Future Self</h2>
+            <p>Dear Future Self: Remember this moment! Keep prioritizing learning over perfection...</p>
+        </section>
+
+        <section data-testid="test-about-extra">
+            <h2 class="section-title">Extra Thoughts</h2>
+            <p>I'm excited to dive into the next stages...</p>
+        </section>
+    </main>
 </body>
 </html>
