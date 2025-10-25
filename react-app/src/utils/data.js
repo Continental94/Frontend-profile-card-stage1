@@ -6,7 +6,7 @@ const TICKET_STORAGE_KEY = 'app_tickets';
 
 
 // --- 2. AUTH CORE (AUTHENTICATION CHECK) ---
-// THIS MUST BE THE VERY FIRST EXPORTED FUNCTION
+// MUST be defined first to avoid "Cannot access before initialization"
 export function isAuthenticated() {
     return !!localStorage.getItem(SESSION_KEY);
 }
@@ -35,7 +35,7 @@ export function handleLogout() {
 }
 
 
-// --- 5. TICKET CRUD LOGIC (ADDED HERE) ---
+// --- 5. TICKET CRUD LOGIC ---
 
 export function getTickets() {
     const data = localStorage.getItem(TICKET_STORAGE_KEY);

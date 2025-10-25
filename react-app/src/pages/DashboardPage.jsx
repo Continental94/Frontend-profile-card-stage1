@@ -9,8 +9,7 @@ const DashboardPage = () => {
     const [formState, setFormState] = useState({ 
         id: '', title: '', status: 'open', description: ''
     });
-    // Re-adding the missing formError state
-    const [formError, setFormError] = useState('');
+    const [formError, setFormError] = useState(''); // Ensure this state is defined
 
     // Load tickets when the component mounts
     useEffect(() => {
@@ -18,7 +17,7 @@ const DashboardPage = () => {
     }, []);
 
     const renderStats = (data) => {
-        // FIX: Ensure data is an array before using length/filter
+        // FIX: Ensure data is an array before using filter
         const safeData = data || []; 
         
         const total = safeData.length;
@@ -42,23 +41,20 @@ const DashboardPage = () => {
             </div>
         );
     };
-
+    
+    // ... rest of DashboardPage functions (handleFormSubmit, handleEdit, handleDelete, etc.)
     const handleFormSubmit = (e) => {
         e.preventDefault();
         setFormError(''); 
         
-        // 1. Mandatory Validation
         if (!formState.title || !formState.status) {
             setFormError("Title and Status are mandatory.");
             showToast("Validation Failed: Title and Status required.", "error");
             return;
         }
 
-        // 2. Save/Update ticket
         const updatedTickets = saveTicket(tickets, formState); 
         setTickets(updatedTickets);
-        
-        // 3. Clear form after submission
         setFormState({ id: '', title: '', status: 'open', description: '' });
     };
 
@@ -98,6 +94,7 @@ const DashboardPage = () => {
         </div>
     );
 
+
     return (
         <Layout>
             <main className="container" style={{ padding: '30px 20px' }}>
@@ -109,7 +106,6 @@ const DashboardPage = () => {
                     <h2>{formState.id ? 'Edit Ticket' : 'Create New Ticket'}</h2>
                     <form onSubmit={handleFormSubmit}>
                         
-                        {/* Error Message included here */}
                         {formError && <p className="error-message" style={{ color: '#dc3545', fontWeight: 'bold' }}>{formError}</p>}
 
                         <label htmlFor="title">Title (Mandatory)</label>
