@@ -1,6 +1,6 @@
-// react-app/src/components/ProtectedRoute.jsx
 import { Navigate } from 'react-router-dom';
-import { isAuthenticated } from '../utils/auth';
+// FIX: Change '../utils/auth' to '../utils/data'
+import { isAuthenticated } from '../utils/data';
 
 export const ProtectedRoute = ({ children }) => {
   // Check the mandatory localStorage key
