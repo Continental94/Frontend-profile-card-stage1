@@ -1,0 +1,160 @@
+/* Globals & Reset */
+:root {
+    --color-primary: #3b82f6; /* A nice blue for brand */
+    --color-open: #28a745;    /* Green */
+    --color-in-progress: #ffc107; /* Amber */
+    --color-closed: #6c757d;  /* Gray */
+    --max-width: 1440px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* MANDATORY REQUIREMENT: Max-Width Container */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header & Footer Consistency */
+header, footer {
+    background-color: #ffffff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+header h1, footer p {
+    color: var(--color-primary);
+}
+
+/* MANDATORY REQUIREMENT: Card/Box Design */
+
+.auth-container { 
+    max-width: 400px; /* Limits the width of the form */
+    margin: 80px auto; /* Centers the form horizontally and adds vertical space */
+}
+.card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* The box shadow look */
+}
+input[type="text"], input[type="password"], input[type="email"] {
+    width: 100%; /* Makes inputs full width */
+    padding: 10px;
+    /* ... other input styles ... */
+}
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Pro Shadow */
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* Hero Section Design */
+.hero {
+    position: relative;
+    padding: 100px 0 150px;
+    background-color: var(--color-primary);
+    color: white;
+    overflow: hidden; /* To clip decorative elements */
+}
+
+/* Hero Wave (Insert your SVG into the background-image URL) */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* Adjust height based on your SVG */
+    /* Placeholder: Replace with your actual SVG data/path */
+    background-image: url('../assets/wavy-hero.svg'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+
+/* Decorative Circle (MANDATORY REQUIREMENT) */
+.decorative-circle {
+    position: absolute;
+    top: 50px;
+    right: 15%;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%; /* Makes it a circle */
+    z-index: 0;
+}
+
+/* Status Tags (MANDATORY COLOR REQUIREMENTS) */
+.tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.tag.open { background-color: var(--color-open); color: white; }
+.tag.in_progress { background-color: var(--color-in-progress); color: #333; }
+.tag.closed { background-color: var(--color-closed); color: white; }
+
+/* Forms & Buttons */
+input[type="text"], input[type="password"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+.btn-primary { background-color: var(--color-primary); color: white; }
+.btn-primary:hover { background-color: #3168d1; }
+.btn-danger { background-color: #dc3545; color: white; }
+.btn-danger:hover { background-color: #c82333; }
+
+/* Responsive Layout (Simple Stacking for Mobile) */
+@media (max-width: 768px) {
+    .dashboard-stats, .ticket-list {
+        grid-template-columns: 1fr; /* Stack items vertically */
+    }
+}
+
+/* Toast/Snackbar (Feedback messages) */
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+.toast {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.toast.success { background-color: var(--color-open); }
+.toast.error { background-color: #dc3545; }

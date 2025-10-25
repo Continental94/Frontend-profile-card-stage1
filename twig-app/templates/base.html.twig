@@ -1,0 +1,43 @@
+{# twig-app/templates/base.html.twig #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ticket Web App{% endblock %}</title>
+    <link rel="stylesheet" href="/public/css/style.css"> 
+</head>
+<body>
+    {# The Global Header (Consistent across all pages) #}
+    <header>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            {# Title from your index.html #}
+            <h1>Infinity TicketApp</h1>
+            <nav>
+                {# Home Link (Always visible) #}
+                <a href="/" class="nav-link" style="margin-right: 15px; color: var(--color-primary); text-decoration: none; font-weight: bold;">Home</a>
+                {# Block for contextual navigation (like Logout button) #}
+                {% block nav_context %}{% endblock %}
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block main_content %}
+            {# Content from child templates goes here #}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 Infinity TicketApp. All rights reserved. | Max Width: 1440px</p>
+        </div>
+    </footer>
+    
+    {% block scripts %}
+        {# Load the combined JS file on all pages #}
+        <div id="toast-container"></div>
+        <script src="/public/js/app.js"></script>
+    {% endblock %}
+</body>
+</html>

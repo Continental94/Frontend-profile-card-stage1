@@ -1,0 +1,38 @@
+{# twig-app/templates/dashboard.html.twig #}
+{% extends "base.html.twig" %}
+
+{% block title %}Dashboard - Ticket Management{% endblock %}
+
+{# Assume tickets_data is passed from the server for the initial render #}
+{% block main_content %}
+    <h2>Summary Statistics</h2>
+    <div class="dashboard-stats">
+        {# NOTE: The numbers here will be updated by your client-side JS (app.js) #}
+        <div class="card"><h3>Total Tickets</h3><p id="stat-total" style="font-size: 2em;">0</p></div>
+        <div class="card"><h3>Open Tickets</h3><p id="stat-open" style="font-size: 2em;">0</p></div>
+        <div class="card"><h3>Resolved Tickets</h3><p id="stat-resolved" style="font-size: 2em;">0</p></div>
+    </div>
+
+    <div class="card" style="margin-bottom: 40px;">
+        <h2>Create New Ticket</h2>
+        {# COPY THE ENTIRE TICKET FORM HTML HERE #}
+        <form id="ticket-form">
+            <input type="hidden" name="ticket_id" value="">
+            <label for="title">Title (Mandatory)</label>
+            <input type="text" id="title" name="title" required>
+            {# ... rest of the form ... #}
+            <button type="submit" class="btn btn-primary">Save Ticket</button>
+        </form>
+    </div>
+
+    <h2>Ticket Management List</h2>
+    <div id="ticket-list" class="ticket-list" style="display: grid; gap: 20px;">
+        {# Initial ticket list can be rendered here by Twig if data is available #}
+        {# Otherwise, it remains empty and is populated by the client-side JS #}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {# Crucial: Include the combined Vanilla JS to handle all CRUD and security logic #}
+    <script src="/public/js/app.js"></script>
+{% endblock %}

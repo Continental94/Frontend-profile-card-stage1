@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Web App - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .auth-container { max-width: 400px; margin: 80px auto; }
+        .error-message { color: #dc3545; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Infinity TicketApp</h1>
+                <div style="margin-left: 1000px;">
+                    <a href="Home" class="btn btn-primary">Home</a>
+                    <a href="login.html" class="btn btn-primary">Login</a>
+                    <a href="login.html" class="btn" style="background: black; color: var(--color-primary); margin-left: 10px;">Get Started</a>
+                </div>
+        </div>
+    </header>
+    <main class="container">
+        <div class="auth-container card">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                
+                <p id="login-error" class="error-message"></p>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Login</button>
+            </form>
+
+            <p style="margin-top: 20px; text-align: center;">
+                New User? <a href="#" onclick="showToast('Signup is simulated. Use test/password to login.', 'info')">Sign Up</a>
+            </p>
+        </div>
+    </main>
+    
+    <div id="toast-container"></div>
+    <script src="js/auth.js"></script>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', handleLogin);
+    </script>
+</body>
+</html>

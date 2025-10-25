@@ -1,0 +1,11 @@
+/* Decorative Circle (MANDATORY REQUIREMENT) */
+.decorative-circle {
+    position: absolute;
+    top: 50px;
+    right: 15%;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%; /* Makes it a circle */
+    z-index: 0;
+}

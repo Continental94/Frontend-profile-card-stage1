@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Web App - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <h1>Dashboard</h1>
+            <nav>
+                <button class="btn btn-danger" onclick="handleLogout()">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 30px 20px;">
+        <h2>Summary Statistics</h2>
+        <div class="dashboard-stats">
+            <div class="card">
+                <h3>Total Tickets</h3>
+                <p id="stat-total" style="font-size: 2em; color: var(--color-primary);">0</p>
+            </div>
+            <div class="card">
+                <h3>Open Tickets</h3>
+                <p id="stat-open" style="font-size: 2em; color: var(--color-open);">0</p>
+            </div>
+            <div class="card">
+                <h3>Resolved Tickets</h3>
+                <p id="stat-resolved" style="font-size: 2em; color: var(--color-closed);">0</p>
+            </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 40px;">
+            <h2>Create New Ticket</h2>
+            <form id="ticket-form">
+                <input type="hidden" name="ticket_id" value="">
+                
+                <label for="title">Title (Mandatory)</label>
+                <input type="text" id="title" name="title" required>
+                
+                <label for="status">Status (Mandatory)</label>
+                <select id="status" name="status" required>
+                    <option value="">-- Select Status --</option>
+                    <option value="open">Open</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="closed">Closed</option>
+                </select>
+                
+                <label for="description">Description (Optional)</label>
+                <textarea id="description" name="description"></textarea>
+                
+                <button type="submit" class="btn btn-primary">Save Ticket</button>
+            </form>
+        </div>
+
+        <h2>Ticket Management List</h2>
+        <div id="ticket-list" class="ticket-list" style="display: grid; gap: 20px;">
+            </div>
+
+    </main>
+    
+    <footer>
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 Infinity TicketApp. All rights reserved. | Max Width: 1440px</p>
+        </div>
+    </footer>
+    
+    <div id="toast-container"></div>
+    <script src="js/auth.js"></script>
+    <script src="js/tickets.js"></script>
+</body>
+</html>
